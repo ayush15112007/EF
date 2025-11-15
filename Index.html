@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Smart Pen Pitch Deck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+/* 1. THE SETUP */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e2e8f0;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  margin: 0;
+  min-height: 100vh;
+  padding: 20px 0;
+  place-items: center;
+}
+
+.slide-container {
+  align-items: center;
+  /* Dark theme background */
+  background-color: #121212;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 720px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 60px;
+  position: relative;
+  width: 1280px;
+}
+
+/* 1.1 BACKGROUND STYLING */
+
+.slide-container::before {
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+.slide-container>* {
+  position: relative;
+  z-index: 1;
+}
+
+/* Colors & Theme */
+:root {
+    --primary-color: #007BFF; /* Bright Blue */
+    --accent-color: #FFD700; /* Gold/Yellow for highlight */
+    --text-light: #E0E0E0;
+    --text-white: #FFFFFF;
+    --bg-dark: #121212;
+    --bg-tile: #1E1E1E;
+}
+
+
+/* 2. CONSISTENT TYPOGRAPHY */
+
+.slide-container h1,
+.slide-container h2,
+.slide-container h3 {
+  color: var(--text-white);
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+.slide-container p,
+.slide-container li,
+.slide-container .subtitle,
+.slide-container .legend li,
+.slide-container th,
+.slide-container td,
+.slide-container .value {
+  color: var(--text-light);
+  font-family: 'Lato', sans-serif;
+}
+
+/* Consistent Font Sizes */
+.slide-container h1 { font-size: 70px; }
+
+.slide-container .slide-title {
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  text-align: left;
+  width: 100%;
+  /* Accent color border */
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+  color: var(--text-white);
+}
+
+.slide-container h3 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.slide-container p,
+.slide-container li,
+.slide-container .subtitle,
+.slide-container .legend li,
+.slide-container th,
+.slide-container td {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.slide-container .subtitle {
+  font-weight: 400;
+  margin: 20px auto;
+  color: var(--text-light);
+}
+
+.slide-container .content-area {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  width: 100%;
+}
+
+/* 3. LAYOUT DEFINITIONS */
+
+.title-layout {
+  text-align: center;
+}
+
+.title-layout h1 {
+    font-size: 90px;
+}
+.title-layout .subtitle {
+    font-size: 24px;
+}
+
+.two-column {
+  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  width: 100%;
+}
+.two-column ul {
+    list-style: none;
+    padding: 0;
+}
+.two-column li {
+    background-color: #252525;
+    padding: 10px 15px;
+    border-left: 4px solid var(--accent-color);
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+
+.tiled-content {
+  align-items: stretch;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  width: 100%;
+}
+
+.tile {
+  align-items: center;
+  background-color: var(--bg-tile);
+  border-radius: 12px;
+  border: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: flex-start;
+  padding: 30px;
+  text-align: center;
+}
+
+.tile .icon {
+  color: var(--primary-color);
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.image-tile {
+  flex: 1;
+  text-align: center;
+}
+
+.image-tile .image-wrapper {
+  height: 225px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.image-tile .image-wrapper img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.image-tile h3 {
+    color: var(--text-white);
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+.image-tile p {
+    font-size: 16px;
+    color: var(--primary-color);
+}
+
+
+/* Problem/Solution List */
+.problem-solution-list {
+    max-width: 900px;
+    width: 100%;
+}
+.problem-solution-list h3 {
+    text-align: center;
+    color: var(--accent-color);
+    margin-bottom: 30px;
+}
+.problem-solution-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.problem-solution-list li {
+    background-color: var(--bg-tile);
+    padding: 20px 30px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.problem-solution-list li i {
+    color: var(--primary-color);
+    font-size: 28px;
+}
+.problem-solution-list li strong {
+    color: var(--text-white);
+    font-weight: 700;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+
+/* Market Size Chart */
+.chart-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+.pie-chart {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-image: conic-gradient(
+        #FFD700 0% 40%, /* Students 40% (Yellow/Gold) */
+        #e34040 40% 70%, /* Professionals 30% (Red) */
+        #ff9933 70% 90%, /* Educators 20% (Orange) */
+        #ffc65a 90% 100% /* Others 10% (Light Yellow) */
+    );
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.1);
+}
+.chart-data {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.chart-legend {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.chart-legend li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.chart-legend li::before {
+    content: '';
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    border-radius: 3px;
+}
+.chart-legend .student::before { background-color: #FFD700; }
+.chart-legend .professional::before { background-color: #e34040; }
+.chart-legend .educator::before { background-color: #ff9933; }
+.chart-legend .other::before { background-color: #ffc65a; }
+.chart-data p strong {
+    color: var(--primary-color);
+}
+.data-point {
+    background-color: var(--bg-tile);
+    padding: 15px;
+    border-radius: 8px;
+}
+.data-point .value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Expansion Plan Timeline */
+.timeline-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+.timeline-phase {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.timeline-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    flex-shrink: 0;
+}
+.timeline-icon i {
+    font-size: 36px;
+    color: var(--primary-color);
+    padding: 15px;
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+}
+.timeline-icon .line {
+    width: 2px;
+    height: 50px;
+    background-color: #333;
+}
+.timeline-content {
+    background-color: var(--bg-tile);
+    padding: 20px;
+    border-radius: 12px;
+    flex-grow: 1;
+}
+.timeline-content h3 {
+    margin-top: 0;
+    font-size: 24px;
+    color: var(--accent-color);
+}
+    </style>
+</head>
+<body>
+<!-- Slide 1: Title Slide (Updated) -->
+<div class="slide-container title-layout" id="slide1">
+    <h1 style="font-size:90px; color: var(--primary-color);">AI SMART PEN</h1>
+    <p class="subtitle" style="font-size: 28px; color: var(--text-white);">Team Aspire: Pen That Thinks Smart</p>
+    <p class="subtitle" style="font-size: 22px;">The Future of Writing, Learning, and Productivity with AI</p>
+</div>
+
+<!-- Slide 2: Team Introduction (Updated with specific names) -->
+<div class="slide-container" id="slide2">
+    <h2 class="slide-title">Meet Team Aspire</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="image-tile">
+                <div class="image-wrapper"><img src="https://placehold.co/225x225/121212/007BFF?text=AP" alt="Ayush Pandey Headshot"></div>
+                <h3>Ayush Pandey</h3>
+                <p>AI/ML, Roll No.: 60</p>
+            </div>
+            <div class="image-tile">
+                <div class="image-wrapper"><img src="https://placehold.co/225x225/121212/007BFF?text=AK" alt="Anuj Kamat Headshot"></div>
+                <h3>Anuj Kamat</h3>
+                <p>AI/ML, Roll No.: 61</p>
+            </div>
+            <div class="image-tile">
+                <div class="image-wrapper"><img src="https://placehold.co/225x225/121212/007BFF?text=AP" alt="Ayush Pathak Headshot"></div>
+                <h3>Ayush Pathak</h3>
+                <p>AI/ML, Roll No.: 62</p>
+            </div>
+            <div class="image-tile">
+                <div class="image-wrapper"><img src="https://placehold.co/225x225/121212/007BFF?text=AS" alt="Ashutosh Shukla Headshot"></div>
+                <h3>Ashutosh Shukla</h3>
+                <p>AI/ML, Roll No.: 63</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 3: Problem Statement (Updated) -->
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">Market Gaps: The Distraction Problem</h2>
+    <div class="content-area">
+        <div class="problem-solution-list">
+            <p style="text-align: center; font-size: 20px;">To use AI, students and professionals must **stop writing**, **pick up a phone**, and get **distracted** by other apps.</p>
+            <br>
+            <h3 style="color: #e34040;"><i class="fa-solid fa-circle-exclamation"></i> The Problem</h3>
+            <ul>
+                <li><i class="fa-solid fa-square-xmark"></i><strong>Context Switching:</strong> AI assistance breaks concentration and workflow due to device switching.</li>
+                <li><i class="fa-solid fa-mobile-screen-button"></i><strong>No Integrated Tool:</strong> There is no single product that combines traditional writing with **real-time, hands-free AI**.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 4: Solution (Updated) -->
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">Our Solution: The AI Smart Pen</h2>
+    <div class="content-area">
+        <div class="problem-solution-list">
+            <p style="text-align: center; font-size: 20px;">The AI Smart Pen fills this gap by **merging natural handwriting with artificial intelligence**, enabling simultaneous workflow.</p>
+            <br>
+            <h3 style="color: #1a6f1e;"><i class="fa-solid fa-circle-check"></i> The Solution</h3>
+            <ul>
+                <li><i class="fa-solid fa-brain"></i><strong>Seamless Integration:</strong> Write, ask, and learn simultaneously without breaking focus.</li>
+                <li><i class="fa-solid fa-hands-clapping"></i><strong>Instant Assistance:</strong> Real-time answers, translation, and note-taking via voice control.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 5: Product Features (Updated with 4 core modes) -->
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">Key Product Modes & Technology</h2>
+    <div class="content-area">
+        <div class="two-column" style="grid-template-columns: 1fr 1.5fr;">
+            <div>
+                <h3>4 Essential Modes</h3>
+                <ul>
+                    <li><i class="fa-solid fa-file-pen" style="color: var(--primary-color);"></i> **Write Mode:** Converts handwriting to digital text, summarizes notes.</li>
+                    <li><i class="fa-solid fa-microphone-lines" style="color: var(--primary-color);"></i> **Talk Mode:** Answers questions, provides real-time information.</li>
+                    <li><i class="fa-solid fa-language" style="color: var(--primary-color);"></i> **Translate Mode:** Provides instant, spoken language translation.</li>
+                    <li><i class="fa-solid fa-list-check" style="color: var(--primary-color);"></i> **To Do Mode:** Quickly captures voice notes and tasks.</li>
+                </ul>
+            </div>
+            <div>
+                <h3>On-Board Technology</h3>
+                <div class="tiled-content" style="gap: 15px; flex-wrap: wrap;">
+                    <div class="tile" style="flex-basis: 45%; padding: 20px;">
+                        <i class="fa-solid fa-microchip" style="font-size: 32px; margin-bottom: 10px;"></i>
+                        <p style="font-size: 16px;">AI Voice Assistant</p>
+                    </div>
+                    <div class="tile" style="flex-basis: 45%; padding: 20px;">
+                        <i class="fa-solid fa-volume-high" style="font-size: 32px; margin-bottom: 10px;"></i>
+                        <p style="font-size: 16px;">Built-in Mic & Speaker</p>
+                    </div>
+                    <div class="tile" style="flex-basis: 45%; padding: 20px;">
+                        <i class="fa-brands fa-bluetooth-b" style="font-size: 32px; margin-bottom: 10px;"></i>
+                        <p style="font-size: 16px;">Bluetooth Connectivity</p>
+                    </div>
+                    <div class="tile" style="flex-basis: 45%; padding: 20px;">
+                        <i class="fa-solid fa-battery-three-quarters" style="font-size: 32px; margin-bottom: 10px;"></i>
+                        <p style="font-size: 16px;">Rechargeable Battery</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6: Market Size (Updated with India Data) -->
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">Target Market: India Focus</h2>
+    <div class="content-area">
+        <div class="chart-container">
+            <div class="pie-chart"></div>
+            <div class="chart-data">
+                <h3>Market Segmentation by Usage:</h3>
+                <ul class="chart-legend">
+                    <li class="student"><strong>Students (40%):</strong> 30M+ students use pens daily.</li>
+                    <li class="professional"><strong>Professionals (30%):</strong> 50M+ professionals take handwritten notes.</li>
+                    <li class="educator"><strong>Educators (20%):</strong> Teachers and Tutors for guided learning.</li>
+                    <li class="other"><strong>Others (10%):</strong> Creatives and general users.</li>
+                </ul>
+                <div class="data-point">
+                    <p style="margin-bottom: 5px;">Digital Learning Market in India:</p>
+                    <span class="value">₹40,000+ Crore</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 7: SWOT Analysis (Simplified Tiling) -->
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">SWOT Analysis</h2>
+    <div class="content-area">
+        <div class="tiled-content" style="flex-wrap: wrap; gap: 20px;">
+            <div class="tile" style="flex-basis: 48%; text-align: left; background-color: #0d345f;">
+                <h3 style="color: var(--accent-color); margin-bottom: 10px;"><i class="fa-solid fa-circle-up"></i> Strengths</h3>
+                <p>Innovative product; Portable and voice-enabled; Helps users stay focused and productive.</p>
+            </div>
+            <div class="tile" style="flex-basis: 48%; text-align: left; background-color: #8c2e2e;">
+                <h3 style="color: var(--accent-color); margin-bottom: 10px;"><i class="fa-solid fa-circle-down"></i> Weaknesses</h3>
+                <p>Higher cost than normal pens; Requires Internet for full AI features; Limited battery life.</p>
+            </div>
+            <div class="tile" style="flex-basis: 48%; text-align: left; background-color: #1a6f1e;">
+                <h3 style="color: var(--accent-color); margin-bottom: 10px;"><i class="fa-solid fa-lightbulb"></i> Opportunities</h3>
+                <p>Rising adoption of AI in education/offices; Partnership potential with schools/brands; Growing smart device market.</p>
+            </div>
+            <div class="tile" style="flex-basis: 48%; text-align: left; background-color: #7d7d00;">
+                <h3 style="color: var(--accent-color); margin-bottom: 10px;"><i class="fa-solid fa-shield-halved"></i> Threats</h3>
+                <p>Competition from existing smart pens; Privacy concerns with voice/data storage; Risk of misuse during exams.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8: 4P's: Product & Price -->
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">4 P's of Marketing: Product & Price</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3 style="color: var(--accent-color);"><i class="fa-solid fa-box"></i> PRODUCT</h3>
+                <p>An interactive smart pen powered by AI. It can talk, assist, and respond while you write, converting handwriting to digital text, summarizing notes, and answering questions. This makes learning and working interactive and efficient.</p>
+            </div>
+            <div>
+                <h3 style="color: var(--accent-color);"><i class="fa-solid fa-tags"></i> PRICE</h3>
+                <p style="font-size: 24px; color: var(--primary-color); font-weight: 700;">₹2,499 – ₹2,999</p>
+                <p>We follow a **value-based pricing strategy**, setting the price to balance innovation and accessibility, giving high-tech AI features at a reasonable cost for students and professionals.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 9: 4P's: Place & Promotion -->
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">4 P's of Marketing: Place & Promotion</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3 style="color: var(--accent-color);"><i class="fa-solid fa-location-dot"></i> PLACE</h3>
+                <ul>
+                    <li>**Online:** Amazon, Flipkart, and our official website for maximum reach.</li>
+                    <li>**Offline:** Stationery shops, tech stores, and strategic college partnerships.</li>
+                    <li>Goal: Wide availability ensures the pen reaches target users across the country.</li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="color: var(--accent-color);"><i class="fa-solid fa-bullhorn"></i> PROMOTION</h3>
+                <p style="font-size: 24px; color: var(--primary-color); font-weight: 700; border: 2px dashed #FFD700; padding: 10px; border-radius: 8px;">"Write Smart. Think Smarter."</p>
+                <p>Focus on digital and campus marketing: social media ads, YouTube reviews, college demos, and influencer collaborations to build trust.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 10: Business Expansion Plan -->
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">Business Expansion Plan</h2>
+    <div class="content-area">
+        <div class="timeline-layout">
+            <div class="timeline-phase">
+                <div class="timeline-icon"><i class="fa-solid fa-flag"></i><div class="line"></div></div>
+                <div class="timeline-content">
+                    <h3>Phase 1: Launch</h3>
+                    <p>Start in major Indian cities through online sales and targeted demo events.</p>
+                </div>
+            </div>
+            <div class="timeline-phase">
+                <div class="timeline-icon"><i class="fa-solid fa-arrow-up-right-dots"></i><div class="line"></div></div>
+                <div class="timeline-content">
+                    <h3>Phase 2: Growth</h3>
+                    <p>Partner with schools, colleges, and corporates; utilize social media for viral promotion.</p>
+                </div>
+            </div>
+            <div class="timeline-phase">
+                <div class="timeline-icon"><i class="fa-solid fa-globe"></i><div class="line"></div></div>
+                <div class="timeline-content">
+                    <h3>Phase 3: Global</h3>
+                    <p>Expand to international markets via e-commerce platforms.</p>
+                </div>
+            </div>
+            <div class="timeline-phase">
+                <div class="timeline-icon"><i class="fa-solid fa-rocket"></i></div>
+                <div class="timeline-content">
+                    <h3>Future Plans</h3>
+                    <p>Launch **AI Smart Pen 2.0** with new features, enhanced app integration, and expanded accessibility.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 11: Finance Plan -->
+<div class="slide-container" id="slide11">
+    <h2 class="slide-title">Finance Plan: Phased Funding</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon" style="color: #FFD700;"><i class="fa-solid fa-seedling"></i></div>
+                <h3>Phase 1: Seed Capital</h3>
+                <p><strong>Source:</strong> Angel Investors (Pitch working prototype).</p>
+                <p><strong>Use of Funds:</strong> R&D for improving hardware/AI, covering initial development, and supporting the first manufacturing run.</p>
+            </div>
+            <div class="tile">
+                <div class="icon" style="color: #1a6f1e;"><i class="fa-solid fa-money-check-dollar"></i></div>
+                <h3>Phase 2: Revenue & Reinvestment</h3>
+                <p><strong>Source:</strong> Sales Revenue (Reinvest profits from initial online sales).</p>
+                <p><strong>Use of Funds:</strong> Aggressive marketing & customer acquisition, and building product inventory for scaling.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 12: Conclusion + Thank You -->
+<div class="slide-container title-layout" id="slide12">
+    <h1 style="color: var(--primary-color); font-size: 80px;">THANK YOU</h1>
+    <p class="subtitle" style="font-size: 28px; color: var(--text-white);">Team Aspire</p>
+    <p class="subtitle" style="font-size: 20px;">Right Team. Right Mindset. Real Results.</p>
+    <p class="subtitle" style="font-size: 24px; color: var(--accent-color);">We are ready to answer your questions.</p>
+</div>
+
+</body>
+</html>
